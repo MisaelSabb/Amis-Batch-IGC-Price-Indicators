@@ -31,7 +31,8 @@ function uploadFileToGoogleDrive(data, file, name, email,userToken, uid) {
     var csvData = Utilities.parseCsv(fileUploaded.getBlob().getDataAsString());
     
     CsvUtility.elaborateData(userToken,uid, csvData);  
-    
+    ETLCaller.runETLJob();
+    ETLCaller.runCloudETLJob();
     return "OK";
 
   } catch (f) {
